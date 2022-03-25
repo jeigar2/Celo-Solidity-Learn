@@ -36,7 +36,7 @@ curso de introducción a Celo con Solidity
 - Desplegar un Smart Contract en la red.
 - Llamar a un método de un Smart Contract (_que previamente esté desplegado en la red_).
 
-### Costo de ejecución:
+### Costo de ejecución
 
 - Hay que pagar un fee (_CeloGLD o Celo Dolar_).
 - En función del número de transacciones se contabiliza el costo.
@@ -68,3 +68,24 @@ saldo, texto y número
 - Funciones **view** no hacen modificaciones, solo lee el estado de la cadena de bloques, no pasan por el algoritmo de consenso y pasan por un solo nodo (local) , no tiene un costo en GAS, es gratis.
 - Funciones **normales** hacen modificaciones o escrituras sobre las variables de estado, requiere que los nodos alcancen consenso (_consistente, coherente y valido_) y tiene un costo.
 - Funciones **puras** no leen ni escriben, son cálculos y no tienen tampoco costo.
+
+## Loops y condicionales
+
+- Condicional, se hace con un `if` `else` y utiliza variables de tipo `bool` con valores `true` y `false`
+
+- Loop son `for` o `while`
+- En los contratos inteligentes se usan muy poco los bucles while
+- En solidity se deben acotadar los loop, para eliminar complejidad, de no ser así el programa si es muy largo se interrumpe y acaba con error. 
+- Por diseño cada programa tiene un limite de instrucciones.
+
+## Tipo de dato address
+
+- viene representado por un parámetro llamado `msg.sender`
+- permite hacer transferencias de valor
+
+## Atributo payable
+
+- Aplica:
+  - a las direcciones
+  - a los métodos del contrato inteligente
+- autoriza a recibir la criptomoneda nativa del ecosistema CeloGLD
