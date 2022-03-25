@@ -1,0 +1,15 @@
+pragma solidity ^0.5;
+
+contract HolaMundo {
+
+    string frase;  // variable de estado
+
+    constructor() public { // función especial solo se ejecuta al instanciarse el contrato 
+        frase = "Hola Mundo"; // asigna a la variable de estado un valor
+    }
+
+    function getFrase () view public returns(string memory _frase){ // función de tipo view (solo lee el estado de la variable de estadom y no es almacenado en disco solo en memoria)
+        return frase;
+    }
+
+}
