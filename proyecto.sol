@@ -23,7 +23,11 @@ contract Proyecto {
     }
 
     //deposita el comprador
-    function despositarPago() public {}
+    function despositarPago() payable public {
+        require(msg.sender==comprador,"No es el comprador");
+        require/msg.value == montoPago, "No es el valor correcto");
+        depositoListo=true;
+    }
 
     function compradorConfirmaOK() public {
         require(msg.sender==comprador,"No es el comprador");
