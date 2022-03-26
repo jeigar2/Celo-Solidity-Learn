@@ -4,17 +4,22 @@ contract Payables {
 
     address public charity; // variable de estado
 
-    mapping(address=>uint) public donations; // variable de estado (relación entre una dirección y un número entero)
+    mapping(address=>uint) public balanceOf; // variable de estado (relación entre una dirección y un número entero)
 
     constructor() {
         charity = msg.sender;
     }
 
-    function deposit() payable public { // permite recibir critpomoneda
-        donations[msg.sender] = msg.value;
+    modifier onlyOwner {
+        require(msg.sender==charity,"Not the charity"); // chequea que se cumpla la condicion, sino manda el mensaje
+        _;
     }
 
-    function withdraw() public {
+    function deposit() payable public { // permite recibir critpomoneda
+        balanceOf[msg.sender] = msg.value;
+    }
+
+    function withdraw() public onlyOwner {
         payable(charity).transfer(address(this).balance); // recibe una transferencia
     }
 }
